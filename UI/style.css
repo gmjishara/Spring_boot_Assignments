@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.layout {
+  width: 100vw;
+  height: 100vh;
+  background-color: #e0d6ff;
+  padding: 25px;
+}
+
+.layout h1 {
+  text-align: center;
+}
+
+.tableContainer {
+  width: 75vw;
+  min-height: 500px;
+  border-radius: 20px;
+  padding: 15px;
+  background-color: white;
+}
+
+.tableContainerOutliner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+  margin-top: 100px;
+}
+
+#registerBtn {
+  width: 150px;
+  position: absolute;
+  top: -10%;
+  right: 13%;
+}
+
+.rows {
+  vertical-align: middle;
+  font-size: 17px;
+}
+
+#registerBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:5px;
+}
+
+.btn {
+  color: aliceblue;
+}
+
+#infoBtn{
+    color: black;
+    font-weight: 500;
+}
+
+.modal-body span {
+  font-weight: 600;
+  margin-right: 5px;
+  font-size: 16.5px;
+}
+
+.modal-grid1 {
+  display: flex;
+  justify-content: center;
+}
+
+.photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+  background-color: #205d9b;
+  background-image: url("./images/cena.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

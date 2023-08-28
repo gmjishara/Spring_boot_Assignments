@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Student {
+    int indexNumber;
     String firstName;
     String lastName;
     int age;
@@ -20,6 +21,4 @@ public class Student {
     String university;
     String institute;
     String batch;
-    String course;
-    double fee;
 }

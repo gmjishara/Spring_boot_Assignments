@@ -1,9 +1,6 @@
 package edu.icet.assignment01.dao;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +14,7 @@ public class StudentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
+    int indexNumber;
     String firstName;
     String lastName;
     int age;
@@ -27,6 +25,5 @@ public class StudentEntity {
     String university;
     String institute;
     String batch;
-    String course;
-    double fee;
+
 }
