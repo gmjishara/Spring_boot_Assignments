@@ -73,12 +73,8 @@
 }
 
 .photo {
-  width: 120px;
-  height: 120px;
+  width: 160px;
+  height: 150px;
   border-radius: 100%;
-  background-color: #205d9b;
-  background-image: url("./images/cena.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  object-fit: cover;
 }
