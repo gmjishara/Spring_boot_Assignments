@@ -25,5 +25,6 @@ public class StudentEntity {
     String university;
     String institute;
     String batch;
+    String image;
 
 }

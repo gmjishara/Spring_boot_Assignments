@@ -21,31 +21,32 @@ const onClickFunction = (id) => {
          <p><span>Batch: </span>${item.batch}</p>`;
       modelGrid2.innerHTML = content;
 
-      let photo = `<div class="photo"></div>`;
+      let photo = `<img src="http://localhost:8080/images/${item.image}" class="photo"></img>`;
       modelGrid1.innerHTML = photo;
     }
   });
 };
 
 const studentRegister = () => {
-  data = {
-    indexNumber: document.getElementById("indexNumber").value,
-    firstName: document.getElementById("firstName").value,
-    lastName: document.getElementById("lastName").value,
-    age: document.getElementById("age").value,
-    gender: document.getElementById("gender").value,
-    address: document.getElementById("address").value,
-    email: document.getElementById("email").value,
-    phoneNumber: document.getElementById("phoneNumber").value,
-    university: document.getElementById("university").value,
-    institute: document.getElementById("institute").value,
-    batch: document.getElementById("batch").value,
-  };
+
+  const formData=new FormData();
+  
+  formData.append("indexNumber",document.getElementById("indexNumber").value);
+  formData.append("firstName",document.getElementById("firstName").value);
+  formData.append("lastName",document.getElementById("lastName").value);
+  formData.append("age",document.getElementById("age").value)
+  formData.append("gender",document.getElementById("gender").value);
+  formData.append("address",document.getElementById("address").value);
+  formData.append("email",document.getElementById("email").value);
+  formData.append("phonenNumber",document.getElementById("phoneNumber"));
+  formData.append("university",document.getElementById("university").value);
+  formData.append("institute",document.getElementById("institute").value);
+  formData.append("batch",document.getElementById("batch").value);
+  formData.append("image",document.getElementById("image").files[0]);
 
   const requestOptions = {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+    body: formData,
   };
 
   //register students
@@ -68,6 +69,12 @@ const studentRegister = () => {
     })
     .catch((error) => console.log(error));
 };
+
+//form submit
+form.addEventListener('submit',function(event){
+  event.preventDefault();
+  studentRegister();
+})
 
 //get students
 fetch("http://localhost:8080/student")

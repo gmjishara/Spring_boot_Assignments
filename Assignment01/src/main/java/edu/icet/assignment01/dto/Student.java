@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 @Builder
 @NoArgsConstructor
@@ -21,4 +22,5 @@ public class Student {
     String university;
     String institute;
     String batch;
+    MultipartFile image;
 }
