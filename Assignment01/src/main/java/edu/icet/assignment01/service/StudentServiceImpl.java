@@ -4,7 +4,6 @@ import edu.icet.assignment01.dao.StudentEntity;
 import edu.icet.assignment01.dto.Student;
 import edu.icet.assignment01.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -48,22 +48,7 @@ public class StudentServiceImpl implements StudentService {
         Files.write(imagePath, imageBytes);
 
         studentRepository.save(studentEntity);
-        if (studentRepository.save(studentEntity) != null) {
-            return ResponseEntity.ok(studentEntity);
-        } else return ResponseEntity.badRequest().build();
-    }
-
-    public List<Student> getAllStudents() {
-        List<Student> students = new ArrayList<>();
-
-        Iterable<StudentEntity> studentsIteration = studentRepository.findAll();
-
-        while (studentsIteration.iterator().hasNext()) {
-            StudentEntity studentEntity = studentsIteration.iterator().next();
-            students.add(Student.builder().indexNumber(studentEntity.getIndexNumber()).firstName(studentEntity.getFirstName()).lastName(studentEntity.getLastName()).age(studentEntity.getAge()).gender(studentEntity.getGender()).address(studentEntity.getAddress()).email(studentEntity.getEmail()).phoneNumber(studentEntity.getPhoneNumber()).university(studentEntity.getUniversity()).institute(studentEntity.getInstitute()).batch(studentEntity.getBatch()).build());
-        }
-
-        return students;
+        return ResponseEntity.ok(studentEntity);
     }
 
     public Iterable<StudentEntity> getAllStudent() {
