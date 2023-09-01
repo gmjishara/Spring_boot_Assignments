@@ -13,7 +13,7 @@ public class StudentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    Long id; //primary key
     int indexNumber;
     String firstName;
     String lastName;

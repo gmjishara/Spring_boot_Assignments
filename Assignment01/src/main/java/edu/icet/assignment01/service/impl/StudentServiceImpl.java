@@ -1,8 +1,9 @@
-package edu.icet.assignment01.service;
+package edu.icet.assignment01.service.impl;
 
 import edu.icet.assignment01.dao.StudentEntity;
 import edu.icet.assignment01.dto.Student;
 import edu.icet.assignment01.repository.StudentRepository;
+import edu.icet.assignment01.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -12,19 +13,20 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
+//spring create bean objects by @service annotation
 @Service
 public class StudentServiceImpl implements StudentService {
 
+    //spring assign StudentRepository type object in runtime
     @Autowired
     StudentRepository studentRepository;
 
     public ResponseEntity<StudentEntity> createStudent(Student student) throws IOException {
+        //create a data access object
         StudentEntity studentEntity = new StudentEntity();
 
+        //pass data of DTO to DAO
         studentEntity.setIndexNumber(student.getIndexNumber());
         studentEntity.setFirstName(student.getFirstName());
         studentEntity.setLastName(student.getLastName());
@@ -47,10 +49,12 @@ public class StudentServiceImpl implements StudentService {
         Path imagePath = Paths.get("src/main/resources/static/images", originalFileName);
         Files.write(imagePath, imageBytes);
 
+        //save data of DAO in database
         studentRepository.save(studentEntity);
         return ResponseEntity.ok(studentEntity);
     }
 
+    //view all students
     public Iterable<StudentEntity> getAllStudent() {
         return studentRepository.findAll();
     }
